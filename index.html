@@ -43,7 +43,7 @@
       outline: 3px solid var(--green);
       outline-offset: 3px;
     }
-    .app { min-height: 100vh; display: grid; grid-template-columns: 244px minmax(0, 1fr); }
+    .app { min-height: 100vh; min-width: 0; display: grid; grid-template-columns: 244px minmax(0, 1fr); }
     .sidebar {
       padding: 26px 16px;
       border-right: 1px solid rgba(255,255,255,.07);
@@ -297,15 +297,16 @@
     .app.ui-mobile { display: block; width: min(100%, 720px); margin: 0 auto; }
     .ui-mobile .sidebar {
       position: sticky; top: 0; z-index: 4; padding: 10px 14px;
-      border-right: 0; border-bottom: 1px solid rgba(255,255,255,.08);
+      min-width: 0; width: 100%; border-right: 0; border-bottom: 1px solid rgba(255,255,255,.08);
       background: rgba(16,18,26,.96); gap: 0;
     }
     .ui-mobile .brand, .ui-mobile .nav-label, .ui-mobile .sidebar-note { display: none; }
-    .ui-mobile .nav-list { display: flex; overflow-x: auto; gap: 4px; scrollbar-width: none; }
+    .ui-mobile .nav-list { display: flex; width: 100%; min-width: 0; max-width: 100%; overflow-x: auto; gap: 4px; scrollbar-width: none; }
     .ui-mobile .nav-list::-webkit-scrollbar { display: none; }
     .ui-mobile .nav-button { min-height: 42px; padding: 8px 11px; white-space: nowrap; font-size: 12px; }
     .ui-mobile .nav-icon { width: auto; }
-    .ui-mobile .topbar { height: 56px; padding: 0 16px; gap: 8px; }
+    .ui-mobile .topbar { width: 100%; min-width: 0; height: 56px; padding: 0 16px; gap: 8px; }
+    .ui-mobile .crumb { min-width: 0; }
     .ui-mobile .topbar-tools { gap: 10px; }
     .ui-mobile .content { padding: 25px 16px 50px; }
     .ui-mobile .skin-layout, .ui-mobile .routine-grid, .ui-mobile .two-column, .ui-mobile .gear-grid { grid-template-columns: 1fr; }
@@ -326,16 +327,17 @@
       .skin-layout { grid-template-columns: 1fr; }
       .sidebar {
         position: sticky; top: 0; z-index: 4; padding: 10px 14px;
-        border-right: 0; border-bottom: 1px solid rgba(255,255,255,.08);
+        min-width: 0; width: 100%; border-right: 0; border-bottom: 1px solid rgba(255,255,255,.08);
         background: rgba(16,18,26,.96); gap: 0;
       }
       .brand { display: none; }
       .nav-label, .sidebar-note { display: none; }
-      .nav-list { display: flex; overflow-x: auto; gap: 4px; scrollbar-width: none; }
+      .nav-list { display: flex; width: 100%; min-width: 0; max-width: 100%; overflow-x: auto; gap: 4px; scrollbar-width: none; }
       .nav-list::-webkit-scrollbar { display: none; }
       .nav-button { min-height: 42px; padding: 8px 11px; white-space: nowrap; font-size: 12px; }
       .nav-icon { width: auto; }
-      .topbar { height: 52px; padding: 0 20px; }
+      .topbar { width: 100%; min-width: 0; height: 52px; padding: 0 20px; }
+      .crumb { min-width: 0; }
       .topbar-tools { gap: 10px; }
       .content { padding-top: 27px; }
       .app.ui-desktop { min-width: 760px; }
