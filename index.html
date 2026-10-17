@@ -89,6 +89,10 @@
       display: flex; align-items: center; justify-content: space-between; gap: 20px;
       padding: 0 clamp(20px, 4vw, 54px);
     }
+    .topbar-tools { display: flex; align-items: center; justify-content: flex-end; gap: 18px; }
+    .view-picker { display: flex; align-items: center; gap: 8px; color: var(--muted); font-size: 12px; white-space: nowrap; }
+    .view-picker select { min-height: 36px; padding: 6px 30px 6px 10px; border: 1px solid var(--line); border-radius: 10px; color: var(--text); background: var(--panel-2); font: inherit; cursor: pointer; }
+    .view-picker select:focus-visible { outline: 3px solid var(--green); outline-offset: 3px; }
     .crumb { color: var(--muted); font-size: 13px; }
     .top-date { display: flex; align-items: center; gap: 9px; color: var(--muted); font-size: 13px; }
     .live-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--green); box-shadow: 0 0 10px rgba(182,243,76,.6); }
@@ -290,6 +294,33 @@
     .toast.show { opacity: 1; transform: translateY(0); }
     .footer-note { color: #777f92; font-size: 11px; margin-top: 34px; }
     [hidden] { display: none !important; }
+    .app.ui-mobile { display: block; width: min(100%, 720px); margin: 0 auto; }
+    .ui-mobile .sidebar {
+      position: sticky; top: 0; z-index: 4; padding: 10px 14px;
+      border-right: 0; border-bottom: 1px solid rgba(255,255,255,.08);
+      background: rgba(16,18,26,.96); gap: 0;
+    }
+    .ui-mobile .brand, .ui-mobile .nav-label, .ui-mobile .sidebar-note { display: none; }
+    .ui-mobile .nav-list { display: flex; overflow-x: auto; gap: 4px; scrollbar-width: none; }
+    .ui-mobile .nav-list::-webkit-scrollbar { display: none; }
+    .ui-mobile .nav-button { min-height: 42px; padding: 8px 11px; white-space: nowrap; font-size: 12px; }
+    .ui-mobile .nav-icon { width: auto; }
+    .ui-mobile .topbar { height: 56px; padding: 0 16px; gap: 8px; }
+    .ui-mobile .topbar-tools { gap: 10px; }
+    .ui-mobile .content { padding: 25px 16px 50px; }
+    .ui-mobile .skin-layout, .ui-mobile .routine-grid, .ui-mobile .two-column, .ui-mobile .gear-grid { grid-template-columns: 1fr; }
+    .ui-mobile .two-column { gap: 12px; margin-top: 30px; }
+    .ui-mobile .routine-card { padding: 15px; }
+    .ui-mobile .skin-panel { padding: 16px; }
+    .app.ui-desktop { grid-template-columns: 244px minmax(0, 1fr); }
+    .ui-desktop .sidebar { position: static; padding: 26px 16px; border-right: 1px solid rgba(255,255,255,.07); border-bottom: 0; gap: 28px; }
+    .ui-desktop .brand { display: flex; }
+    .ui-desktop .nav-label, .ui-desktop .sidebar-note { display: block; }
+    .ui-desktop .nav-list { display: grid; overflow: visible; gap: 5px; }
+    .ui-desktop .nav-button { min-height: 44px; padding: 10px 12px; white-space: normal; font-size: 15px; }
+    .ui-desktop .nav-icon { width: 22px; }
+    .ui-desktop .topbar { height: 72px; padding: 0 clamp(20px, 4vw, 54px); }
+    .ui-desktop .content { max-width: 1190px; padding: 36px clamp(20px, 4vw, 54px) 64px; }
     @media (max-width: 820px) {
       .app { grid-template-columns: 1fr; }
       .skin-layout { grid-template-columns: 1fr; }
@@ -305,7 +336,17 @@
       .nav-button { min-height: 42px; padding: 8px 11px; white-space: nowrap; font-size: 12px; }
       .nav-icon { width: auto; }
       .topbar { height: 52px; padding: 0 20px; }
+      .topbar-tools { gap: 10px; }
       .content { padding-top: 27px; }
+      .app.ui-desktop { min-width: 760px; }
+      .ui-desktop .sidebar { position: static; padding: 26px 16px; border-right: 1px solid rgba(255,255,255,.07); border-bottom: 0; gap: 28px; }
+      .ui-desktop .brand { display: flex; }
+      .ui-desktop .nav-label, .ui-desktop .sidebar-note { display: block; }
+      .ui-desktop .nav-list { display: grid; overflow: visible; gap: 5px; }
+      .ui-desktop .nav-button { min-height: 44px; padding: 10px 12px; white-space: normal; font-size: 15px; }
+      .ui-desktop .nav-icon { width: 22px; }
+      .ui-desktop .topbar { height: 72px; padding: 0 22px; }
+      .ui-desktop .content { padding: 36px 22px 64px; }
     }
     @media (max-width: 620px) {
       .stats { gap: 8px; margin: 17px 0 30px; }
@@ -325,6 +366,13 @@
       .session-top { align-items: flex-end; }
       .week-day { grid-template-columns: 55px minmax(0,1fr) auto; gap: 9px; padding: 12px 10px; }
       .day-title { font-size: 13px; }
+      .view-picker { gap: 5px; font-size: 11px; }
+      .view-picker select { min-height: 34px; padding: 5px 24px 5px 8px; }
+      .ui-mobile .topbar { padding: 0 12px; }
+      .ui-mobile .crumb { max-width: 36vw; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+      .ui-mobile .topbar-tools { gap: 7px; }
+      .ui-mobile .top-date { gap: 6px; font-size: 11px; }
+      .ui-mobile .content { padding-left: 14px; padding-right: 14px; }
     }
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; }
@@ -350,7 +398,12 @@
     <main>
       <div class="topbar">
         <div class="crumb" id="breadcrumb">Mi entrenamiento</div>
-        <div class="top-date"><span class="live-dot" aria-hidden="true"></span><span id="today-label"></span></div>
+        <div class="topbar-tools">
+          <label class="view-picker" for="ui-mode"><span>Vista</span><select id="ui-mode" aria-label="Cambiar vista de la app">
+            <option value="auto">Auto</option><option value="desktop">PC</option><option value="mobile">Celular</option>
+          </select></label>
+          <div class="top-date"><span class="live-dot" aria-hidden="true"></span><span id="today-label"></span></div>
+        </div>
       </div>
       <div class="content" id="view" aria-live="polite"></div>
     </main>
@@ -471,7 +524,19 @@
     const view = document.getElementById("view");
     const nav = document.getElementById("navigation");
     const toast = document.getElementById("toast");
+    const uiModePicker = document.getElementById("ui-mode");
     document.getElementById("today-label").textContent = new Intl.DateTimeFormat("es-MX", { weekday: "short", day: "numeric", month: "short" }).format(today);
+
+    function applyUIMode(mode) {
+      const validMode = ["auto", "desktop", "mobile"].includes(mode) ? mode : "auto";
+      document.querySelector(".app").classList.toggle("ui-mobile", validMode === "mobile");
+      document.querySelector(".app").classList.toggle("ui-desktop", validMode === "desktop");
+      if (uiModePicker.value !== validMode) uiModePicker.value = validMode;
+      saved.uiMode = validMode;
+      save();
+    }
+    uiModePicker.addEventListener("change", function () { applyUIMode(uiModePicker.value); });
+    applyUIMode(saved.uiMode || "auto");
 
     function dayState(key) {
       if (!saved.days[key]) saved.days[key] = { exercises: {}, challengeDone: false };
