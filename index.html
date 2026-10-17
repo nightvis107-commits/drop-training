@@ -206,6 +206,7 @@
     .exercise-title { font-weight: 650; }
     .exercise.completed .exercise-title { color: #bbc4b0; text-decoration: line-through; text-decoration-color: #7e9460; }
     .exercise-detail { color: var(--muted); font-size: 12px; margin-top: 3px; }
+    .exercise-meta { color: var(--green); font-size: 11px; }
     .exercise-time { color: var(--green); font-size: 12px; font-weight: 700; white-space: nowrap; }
     .session-panel {
       margin-top: 22px; border-radius: 17px; padding: 18px;
@@ -219,6 +220,35 @@
     .session-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
     .session-empty { color: var(--muted); font-size: 13px; }
     .session-empty strong { color: var(--text); display: block; margin-bottom: 4px; }
+    .smart-config { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 14px; margin-top: 25px; }
+    .smart-card { min-width: 0; padding: 19px; border: 1px solid var(--line); border-radius: 16px; background: rgba(25,28,39,.82); }
+    .smart-priority-card { grid-column: 1 / -1; }
+    .smart-card legend, .smart-field-label { display: block; margin-bottom: 10px; color: var(--text); font-size: 13px; font-weight: 750; }
+    .smart-card select { width: 100%; min-height: 44px; padding: 9px 12px; border: 1px solid var(--line); border-radius: 11px; color: var(--text); background: var(--panel-2); font: inherit; }
+    .smart-card fieldset { min-width: 0; margin: 0; padding: 0; border: 0; }
+    .smart-duration-options { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 8px; }
+    .smart-duration-option { display: grid; place-items: center; min-height: 72px; padding: 9px 5px; border: 1px solid var(--line); border-radius: 12px; background: rgba(255,255,255,.025); cursor: pointer; font-weight: 800; }
+    .smart-duration-option:has(input:checked) { border-color: rgba(182,243,76,.65); color: var(--green); background: rgba(182,243,76,.09); }
+    .smart-duration-option input { width: 17px; height: 17px; margin: 0 0 4px; accent-color: var(--green); }
+    .smart-priority-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 8px; }
+    .smart-priority { display: flex; align-items: center; gap: 9px; min-height: 42px; padding: 8px 10px; border: 1px solid rgba(255,255,255,.07); border-radius: 10px; background: rgba(255,255,255,.025); color: var(--muted); font-size: 12px; cursor: pointer; }
+    .smart-priority:has(input:checked) { border-color: rgba(182,243,76,.38); color: var(--text); background: rgba(182,243,76,.07); }
+    .smart-priority input { width: 16px; height: 16px; margin: 0; accent-color: var(--green); }
+    .smart-actions { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 16px; }
+    .smart-plan { margin-top: 22px; padding: 20px; border: 1px solid rgba(182,243,76,.25); border-radius: 18px; background: linear-gradient(135deg,rgba(182,243,76,.075),rgba(167,139,250,.035)); }
+    .smart-plan-heading { display: flex; align-items: flex-start; justify-content: space-between; gap: 14px; margin-bottom: 16px; }
+    .smart-plan-heading p { margin-top: 5px; color: var(--muted); font-size: 13px; }
+    .smart-plan-list { display: grid; gap: 8px; margin: 0; padding: 0; list-style: none; }
+    .smart-plan-row { display: grid; grid-template-columns: 30px minmax(0,1fr) auto; align-items: start; gap: 10px; padding: 12px; border: 1px solid rgba(255,255,255,.065); border-radius: 12px; background: rgba(13,15,22,.28); }
+    .smart-plan-number { display: grid; place-items: center; width: 26px; height: 26px; border-radius: 8px; color: var(--green); background: rgba(182,243,76,.10); font-size: 11px; font-weight: 800; }
+    .smart-plan-copy { min-width: 0; }
+    .smart-plan-copy strong { display: block; font-size: 13px; }
+    .smart-plan-copy span { display: block; margin-top: 3px; color: var(--muted); font-size: 12px; }
+    .smart-plan-time { color: var(--green); font-size: 12px; font-weight: 750; white-space: nowrap; }
+    .smart-history-list { display: grid; gap: 8px; margin-top: 13px; }
+    .smart-history-row { display: flex; justify-content: space-between; gap: 12px; padding: 11px 13px; border: 1px solid rgba(255,255,255,.06); border-radius: 11px; background: rgba(25,28,39,.7); font-size: 12px; }
+    .smart-history-row span:last-child { color: var(--green); white-space: nowrap; }
+    .smart-help { margin-top: 12px; color: var(--muted); font-size: 12px; }
     .challenge-banner {
       padding: 23px; border-radius: 18px; background: linear-gradient(115deg, rgba(167,139,250,.14), rgba(167,139,250,.045));
       border: 1px solid rgba(167,139,250,.21); margin: 23px 0 28px;
@@ -314,7 +344,7 @@
     .ui-mobile .crumb { min-width: 0; }
     .ui-mobile .topbar-tools { gap: 10px; }
     .ui-mobile .content { padding: 25px 16px 50px; }
-    .ui-mobile .skin-layout, .ui-mobile .routine-grid, .ui-mobile .two-column, .ui-mobile .gear-grid { grid-template-columns: 1fr; }
+    .ui-mobile .skin-layout, .ui-mobile .routine-grid, .ui-mobile .two-column, .ui-mobile .gear-grid, .ui-mobile .smart-config { grid-template-columns: 1fr; }
     .ui-mobile .skin-result-pair { grid-template-columns: 1fr; }
     .ui-mobile .two-column { gap: 12px; margin-top: 30px; }
     .ui-mobile .routine-card { padding: 15px; }
@@ -359,6 +389,10 @@
     }
     @media (max-width: 620px) {
       .stats { gap: 8px; margin: 17px 0 30px; }
+      .smart-config { grid-template-columns: 1fr; }
+      .smart-card { padding: 16px; }
+      .smart-plan { padding: 16px; }
+      .smart-plan-heading { flex-direction: column; }
       .skin-panel { padding: 16px; }
       .skin-wheel-stage { width: min(100%, 340px); }
       .stat { padding: 13px 12px; }
@@ -441,7 +475,7 @@
         ]
       },
       {
-        id: "retakes", name: "Retakes a height", icon: "↗", tagline: "Gana altura con protección y rutas que puedas repetir.",
+        id: "retakes", name: "Retakes a high", icon: "↗", tagline: "Gana altura con protección y rutas que puedas repetir.",
         exercises: [
           ["retake-side", "Salto lateral básico", "Practica el salto lateral con pared de protección.", 120],
           ["retake-ramp", "Rampa protegida a cono", "Sube con rampa, pared y cono para cubrir el siguiente movimiento.", 180],
@@ -473,7 +507,7 @@
     const challenges = [
       { name: "Lunes", title: "Ojo de águila", text: "Calienta la puntería y termina con disparos controlados.", objective: "Acumula 50 impactos a objetivos en tu mapa de aim favorito." },
       { name: "Martes", title: "Dueño de la caja", text: "Toma las piezas antes de atacar; no entres a ciegas.", objective: "Completa 5 entradas a caja colocando pared, cono y piso primero." },
-      { name: "Miércoles", title: "La altura es tuya", text: "Repite la misma ruta hasta que salga con protección.", objective: "Haz 5 retakes seguidos sin caer ni perder la cobertura." },
+      { name: "Miércoles", title: "La altura es tuya", text: "Repite la misma ruta hasta que salga con protección.", objective: "Haz 5 retakes a high seguidos sin caer ni perder la cobertura." },
       { name: "Jueves", title: "Ruta inteligente", text: "Practica leer el terreno antes de correr hacia la zona.", objective: "Completa 3 rotaciones usando cobertura y una ruta alternativa." },
       { name: "Viernes", title: "Sin frenar", text: "Mantén el movimiento y recupera el ritmo si cometes un error.", objective: "Haz 5 minutos de free build continuo, sin reiniciar por un fallo." },
       { name: "Sábado", title: "Mezcla completa", text: "Toca todas las habilidades en una sesión corta.", objective: "Entrena 3 minutos de aim, piece control, retakes, rotaciones y free build." },
@@ -517,8 +551,28 @@
       { name: "Ice Breaker", reason: "Te recuerda mantener la cabeza fría y controlar el ritmo de cada duelo." },
       { name: "The Minty Mountaineer", reason: "Una elección para avanzar paso a paso y superar cada reto de la sesión." }
     ];
+    const smartSkillLabels = {
+      editing: "Edición", piece: "Piece control", building: "Construcción", aim: "Puntería", decisions: "Decisiones y rotaciones"
+    };
+    const smartGoals = {
+      editing: { name: "Edición", description: "Ediciones rápidas, re-edits y control del peek.", skills: ["editing"] },
+      piece: { name: "Piece control", description: "Toma piezas, prepara la caja y entra con ventaja.", skills: ["piece"] },
+      building: { name: "Construcción", description: "Free build, retakes y control de altura.", skills: ["building"] },
+      aim: { name: "Puntería", description: "Tracking, flicks y cambios de objetivo.", skills: ["aim"] },
+      mixed: { name: "Entrenamiento mixto", description: "Una sesión variada con prioridades elegidas por ti.", skills: ["editing", "piece", "building", "aim", "decisions"] }
+    };
+    const smartExerciseSkills = {
+      "aim-track": ["aim"], "aim-flicks": ["aim"], "aim-switch": ["aim"], "aim-shotgun": ["aim"], "aim-micro": ["aim"],
+      "piece-tunnel": ["editing", "piece"], "piece-entry": ["piece", "decisions"], "piece-peanut": ["editing", "piece"], "piece-peek": ["piece", "decisions"], "piece-scenario": ["editing", "piece"],
+      "retake-side": ["building"], "retake-ramp": ["building"], "retake-chain": ["building"], "retake-90": ["building"], "retake-reset": ["building", "decisions"],
+      "rot-zone": ["decisions"], "rot-tarp": ["building", "decisions"], "rot-refresh": ["decisions"], "rot-endgame": ["decisions"],
+      "free-warmup": ["building"], "free-90s": ["building"], "free-edits": ["editing", "building"], "free-combos": ["building"], "free-flow": ["building", "decisions"]
+    };
+    const smartAdvancedExercises = ["piece-entry", "piece-peek", "piece-scenario", "retake-chain", "retake-90", "rot-endgame", "free-combos"];
+    const smartBeginnerExercises = ["aim-track", "aim-micro", "retake-side", "rot-zone", "free-warmup"];
     const navItems = [
       { id: "home", name: "Inicio", icon: "⌂" },
+      { id: "smart", name: "Rutina inteligente", icon: "✦" },
       ...routines.map(function (r) { return { id: r.id, name: r.name, icon: r.icon }; }),
       { id: "gear", name: "Mis periféricos", icon: "⌘" },
       { id: "challenges", name: "Retos diarios", icon: "✦" },
@@ -533,6 +587,18 @@
     let saved = {};
     try { saved = JSON.parse(localStorage.getItem(storageKey) || "{}") || {}; } catch (e) { saved = {}; }
     if (!saved.days) saved.days = {};
+    const storedSmartSettings = saved.smartSettings || {};
+    const initialSmartGoal = Object.prototype.hasOwnProperty.call(smartGoals, storedSmartSettings.goal) ? storedSmartSettings.goal : "mixed";
+    const initialSmartSkills = smartGoals[initialSmartGoal].skills;
+    let smartSettings = {
+      duration: [15, 30, 45].includes(Number(storedSmartSettings.duration)) ? Number(storedSmartSettings.duration) : 15,
+      goal: initialSmartGoal,
+      priorities: Array.isArray(storedSmartSettings.priorities) ? storedSmartSettings.priorities.filter(function (skill) { return initialSmartSkills.includes(skill); }).slice(0, 3) : []
+    };
+    if (!smartSettings.priorities.length) smartSettings.priorities = [initialSmartSkills[0]];
+    const storedGeneratedRoutine = saved.generatedRoutine;
+    let generatedRoutine = storedGeneratedRoutine && typeof storedGeneratedRoutine.id === "string" && Array.isArray(storedGeneratedRoutine.exercises) && storedGeneratedRoutine.exercises.length && storedGeneratedRoutine.exercises.every(function (exercise) { return Array.isArray(exercise) && exercise.length >= 6 && Number.isFinite(exercise[3]); }) ? Object.assign({}, storedGeneratedRoutine, { isSmart: true }) : null;
+    saved.smartHistory = Array.isArray(saved.smartHistory) ? saved.smartHistory.slice(-50) : [];
     let currentPage = "home";
     let selectedChallengeDate = todayKey;
     let session = null;
@@ -563,6 +629,10 @@
     }
     function save() {
       try { localStorage.setItem(storageKey, JSON.stringify(saved)); } catch (e) {}
+    }
+    function saveSmartSettings() {
+      saved.smartSettings = { duration: smartSettings.duration, goal: smartSettings.goal, priorities: smartSettings.priorities.slice() };
+      save();
     }
     function formatTime(seconds) {
       const min = Math.floor(seconds / 60);
@@ -617,6 +687,10 @@
       const item = navItems.find(function (n) { return n.id === currentPage; });
       document.getElementById("breadcrumb").textContent = item ? item.name : "Mi entrenamiento";
       if (currentPage === "home") renderHome();
+      else if (currentPage === "smart") {
+        if (session && generatedRoutine && session.routineId === generatedRoutine.id) renderRoutine(generatedRoutine);
+        else renderSmartPlanner();
+      }
       else if (currentPage === "challenges") renderChallenges();
       else if (currentPage === "gear") renderGear();
       else if (currentPage === "skins") renderSkins();
@@ -631,7 +705,7 @@
       view.innerHTML =
         '<section class="welcome"><div class="welcome-copy"><p class="eyebrow">Tu zona de entrenamiento</p><h1>Entrena con intención.</h1>' +
         '<p class="page-intro">Rutinas cortas, práctica enfocada y un reto nuevo cada día para llegar a la partida con confianza.</p>' +
-        '<div class="button-row"><button class="button primary" type="button" data-go="' + routines[0].id + '">▶ &nbsp;Empezar con aim</button>' +
+        '<div class="button-row"><button class="button primary" type="button" data-go="smart">✦ &nbsp;Crear rutina inteligente</button><button class="button secondary" type="button" data-go="' + routines[0].id + '">▶ &nbsp;Empezar con aim</button>' +
         '<button class="button secondary" type="button" data-go="challenges">Ver reto de hoy &nbsp;↗</button>' +
         '<button class="button secondary" type="button" data-go="skins">Skin de entrenamiento de hoy &nbsp;↗</button></div></div></section>' +
         '<section class="stats" aria-label="Tu progreso de hoy"><div class="stat"><div class="stat-label">Ejercicios hechos hoy</div><div class="stat-value">' + doneExercises + '<span style="color:var(--muted);font-size:15px;font-weight:500"> / ' + allExercises + '</span></div><div class="stat-note">Se guarda en este navegador</div></div>' +
@@ -649,6 +723,175 @@
         '<div class="tip"><p class="eyebrow">Consejo rápido</p><h3>Calidad antes que velocidad</h3><p>Empieza despacio. Cuando puedas repetir un movimiento bien varias veces, sube el ritmo poco a poco.</p><button class="link-button" type="button" data-go="gear">Ver mis periféricos ↗</button></div></section>' +
         '<p class="footer-note">Tu progreso se guarda automáticamente en este dispositivo.</p>';
       bindNavigationButtons();
+    }
+    function renderSmartPlanner() {
+      const goal = smartGoals[smartSettings.goal] || smartGoals.mixed;
+      const priorityMarkup = goal.skills.map(function (skill) {
+        const checked = smartSettings.priorities.includes(skill);
+        return '<label class="smart-priority"><input type="checkbox" value="' + skill + '" data-smart-priority ' + (checked ? 'checked' : '') + ' aria-label="Priorizar ' + smartSkillLabels[skill] + '"><span>' + smartSkillLabels[skill] + '</span></label>';
+      }).join("");
+      const history = saved.smartHistory.slice();
+      const finishedSessions = history.filter(function (result) { return result.completed; }).length;
+      const trainedMinutes = Math.floor(history.reduce(function (sum, result) { return sum + (Number(result.completedSeconds) || 0); }, 0) / 60);
+      const lastResult = history.length ? history[history.length - 1] : null;
+      const lastFocus = lastResult && smartGoals[lastResult.goal] ? smartGoals[lastResult.goal].name : "Aún sin sesiones";
+      const planRows = generatedRoutine ? generatedRoutine.exercises.map(function (exercise, index) {
+        return '<li class="smart-plan-row"><span class="smart-plan-number">' + String(index + 1).padStart(2, '0') + '</span><span class="smart-plan-copy"><strong>' + exercise[1] + '</strong><span>' + exercise[2] + ' · ' + exercise[5] + ' · ' + exercise[4] + '</span></span><span class="smart-plan-time">' + durationLabel(exercise[3]) + '</span></li>';
+      }).join("") : "";
+      const recentHistory = history.slice().reverse().slice(0, 4).map(function (result) {
+        const date = new Date(result.date + "T12:00:00");
+        const dateLabel = Number.isNaN(date.getTime()) ? "Sesión guardada" : new Intl.DateTimeFormat("es-MX", { day: "numeric", month: "short" }).format(date);
+        const focus = smartGoals[result.goal] ? smartGoals[result.goal].name : "Rutina mixta";
+        return '<div class="smart-history-row"><span>' + dateLabel + ' · ' + focus + '</span><span>' + (Math.floor((Number(result.completedSeconds) || 0) / 60)) + ' min · ' + (result.completed ? 'Completa' : (result.completedExercises || 0) + '/' + (result.totalExercises || 0)) + '</span></div>';
+      }).join("");
+      const planBlock = generatedRoutine ?
+        '<section class="smart-plan" aria-label="Rutina generada"><div class="smart-plan-heading"><div><p class="eyebrow">Última rutina generada</p><h2>' + (smartGoals[generatedRoutine.goal] ? smartGoals[generatedRoutine.goal].name : 'Rutina inteligente') + '</h2><p>' + (generatedRoutine.prioritySkills || []).map(function (skill) { return smartSkillLabels[skill] || skill; }).join(' · ') + '</p></div><span class="duration-pill">◷ &nbsp;' + durationLabel(totalDuration(generatedRoutine)) + '</span></div><ol class="smart-plan-list">' + planRows + '</ol><div class="smart-actions"><button class="button primary" type="button" data-smart-start>▶ Iniciar sesión</button><button class="button secondary" type="button" data-smart-generate>↻ Generar otra</button></div><p class="smart-help">La rutina queda guardada en este dispositivo. Puedes marcar los ejercicios individualmente o seguir el temporizador.</p></section>' :
+        '<section class="smart-plan" aria-label="Vista previa"><p class="eyebrow">Tu plan aparecerá aquí</p><h2>Listo para entrenar</h2><p class="smart-help">Elige el tiempo, el objetivo y tus prioridades. La app ordenará los ejercicios para completar una sesión de la duración elegida.</p></section>';
+      const options = Object.keys(smartGoals).map(function (id) {
+        return '<option value="' + id + '" ' + (smartSettings.goal === id ? 'selected' : '') + '>' + smartGoals[id].name + '</option>';
+      }).join("");
+      const durations = [15, 30, 45].map(function (minutes) {
+        return '<label class="smart-duration-option"><input type="radio" name="smart-duration" value="' + minutes + '" ' + (smartSettings.duration === minutes ? 'checked' : '') + '><span>' + minutes + ' min</span></label>';
+      }).join("");
+      view.innerHTML =
+        '<p class="eyebrow">Entrenamiento a tu medida</p><h1>Rutina inteligente</h1><p class="page-intro">Arma una sesión con foco competitivo: elige una duración, define el objetivo y dale prioridad a las habilidades que quieres pulir.</p>' +
+        '<section class="smart-config" aria-label="Configurar rutina"><fieldset class="smart-card"><legend>Duración de sesión</legend><div class="smart-duration-options" role="group" aria-label="Elige la duración">' + durations + '</div></fieldset>' +
+        '<div class="smart-card"><label class="smart-field-label" for="smart-goal">Objetivo principal</label><select id="smart-goal" aria-label="Objetivo principal">' + options + '</select><p class="smart-help" id="smart-goal-help">' + goal.description + '</p></div>' +
+        '<fieldset class="smart-card smart-priority-card"><legend>Habilidades prioritarias</legend><div class="smart-priority-grid">' + priorityMarkup + '</div><p class="smart-help">Elige entre 1 y 3 prioridades. La rutina les dará más espacio sin perder el enfoque del objetivo.</p></fieldset></section>' +
+        '<div class="smart-actions"><button class="button primary" type="button" id="generate-smart">✦ Generar rutina</button></div>' + planBlock +
+        '<section><div class="section-heading" style="margin-top:30px"><div><h2>Resultados guardados</h2><p>Se conservan en este dispositivo junto con tus preferencias.</p></div></div><div class="stats" aria-label="Resultados de rutina inteligente"><div class="stat"><div class="stat-label">Sesiones completas</div><div class="stat-value">' + finishedSessions + '</div><div class="stat-note">Rutinas inteligentes terminadas</div></div><div class="stat"><div class="stat-label">Tiempo entrenado</div><div class="stat-value">' + trainedMinutes + '<span style="color:var(--muted);font-size:15px;font-weight:500"> min</span></div><div class="stat-note">Ejercicios marcados como hechos</div></div><div class="stat"><div class="stat-label">Último enfoque</div><div class="stat-value" style="font-size:17px">' + lastFocus + '</div><div class="stat-note">Tu sesión más reciente</div></div></div>' +
+        (recentHistory ? '<div class="smart-history-list" aria-label="Sesiones recientes">' + recentHistory + '</div>' : '<p class="smart-help">Aún no hay sesiones registradas. Al terminar o detener una, el resultado aparecerá aquí.</p>') + '</section>' +
+        '<p class="footer-note">Las rutinas mezclan ejercicios existentes. Tus ajustes, planes y resultados se guardan localmente en este navegador.</p>';
+
+      view.querySelectorAll('input[name="smart-duration"]').forEach(function (input) {
+        input.addEventListener("change", function () { smartSettings.duration = Number(input.value); saveSmartSettings(); });
+      });
+      view.querySelector("#smart-goal").addEventListener("change", function () {
+        smartSettings.goal = this.value;
+        const available = smartGoals[smartSettings.goal].skills;
+        smartSettings.priorities = smartSettings.priorities.filter(function (skill) { return available.includes(skill); });
+        if (!smartSettings.priorities.length) smartSettings.priorities = [available[0]];
+        saveSmartSettings(); renderSmartPlanner();
+      });
+      view.querySelectorAll("[data-smart-priority]").forEach(function (input) {
+        input.addEventListener("change", function () {
+          const selected = Array.from(view.querySelectorAll("[data-smart-priority]:checked")).map(function (item) { return item.value; });
+          if (!selected.length) { input.checked = true; showToast("Mantén al menos una habilidad prioritaria."); return; }
+          if (selected.length > 3) { input.checked = false; showToast("Puedes priorizar hasta tres habilidades."); return; }
+          smartSettings.priorities = selected; saveSmartSettings();
+        });
+      });
+      view.querySelector("#generate-smart").addEventListener("click", function () {
+        if (!generateSmartRoutine()) return;
+        renderSmartPlanner(); showToast("Rutina inteligente generada.");
+      });
+      const regenerateButton = view.querySelector("[data-smart-generate]");
+      if (regenerateButton) regenerateButton.addEventListener("click", function () {
+        if (!generateSmartRoutine()) return;
+        renderSmartPlanner(); showToast("Nueva combinación lista.");
+      });
+      const startButton = view.querySelector("[data-smart-start]");
+      if (startButton) startButton.addEventListener("click", startSmartSession);
+    }
+    function generateSmartRoutine() {
+      const goalId = smartGoals[smartSettings.goal] ? smartSettings.goal : "mixed";
+      const goal = smartGoals[goalId];
+      const priorities = smartSettings.priorities.filter(function (skill) { return goal.skills.includes(skill); });
+      if (!priorities.length) priorities.push(goal.skills[0]);
+      const pool = routines.reduce(function (all, routine) {
+        return all.concat(routine.exercises.map(function (exercise) {
+          return { exercise: exercise, skills: smartExerciseSkills[exercise[0]] || [] };
+        }));
+      }, []).filter(function (item) {
+        return item.skills.some(function (skill) { return goal.skills.includes(skill); });
+      });
+      if (!pool.length) { showToast("No encontramos ejercicios para ese objetivo."); return false; }
+
+      const twoMinuteSlots = 3;
+      const threeMinuteSlots = (smartSettings.duration - twoMinuteSlots * 2) / 3;
+      const slots = Array(twoMinuteSlots).fill(120).concat(Array(threeMinuteSlots).fill(180));
+      for (let index = slots.length - 1; index > 0; index--) {
+        const swapIndex = Math.floor(Math.random() * (index + 1));
+        const value = slots[index]; slots[index] = slots[swapIndex]; slots[swapIndex] = value;
+      }
+      const prioritySlots = Math.max(priorities.length, Math.ceil(slots.length * .7));
+      const skillCounts = {};
+      const exerciseCounts = {};
+      const exercises = [];
+      let previousExerciseId = "";
+      let priorityCursor = 0;
+      const planId = "smart-" + Date.now().toString(36);
+      slots.forEach(function (seconds, index) {
+        const targetSkill = index < prioritySlots ? priorities[priorityCursor++ % priorities.length] : null;
+        let candidates = targetSkill ? pool.filter(function (item) { return item.skills.includes(targetSkill); }) : pool;
+        if (!candidates.length) candidates = pool;
+        const alternatives = candidates.filter(function (item) { return item.exercise[0] !== previousExerciseId; });
+        if (alternatives.length) candidates = alternatives;
+        const weights = candidates.map(function (item) {
+          const priorityMatch = item.skills.filter(function (skill) { return priorities.includes(skill); }).length;
+          const skillLoad = item.skills.reduce(function (sum, skill) { return sum + (skillCounts[skill] || 0); }, 0);
+          return (1 + priorityMatch * 3) / ((1 + (exerciseCounts[item.exercise[0]] || 0) * .8) * (1 + skillLoad * .12));
+        });
+        const weightTotal = weights.reduce(function (sum, weight) { return sum + weight; }, 0);
+        let roll = Math.random() * weightTotal;
+        let chosenIndex = 0;
+        for (let candidateIndex = 0; candidateIndex < candidates.length; candidateIndex++) {
+          roll -= weights[candidateIndex];
+          if (roll <= 0) { chosenIndex = candidateIndex; break; }
+        }
+        const chosen = candidates[chosenIndex];
+        const sourceExercise = chosen.exercise;
+        const sourceId = sourceExercise[0];
+        const skill = targetSkill || chosen.skills.find(function (item) { return priorities.includes(item); }) || chosen.skills[0];
+        const difficulty = smartAdvancedExercises.includes(sourceId) ? "Avanzada" : smartBeginnerExercises.includes(sourceId) ? "Inicial" : "Intermedia";
+        exercises.push([planId + "-" + (index + 1), sourceExercise[1], sourceExercise[2], seconds, difficulty, smartSkillLabels[skill] || "Mixto"]);
+        previousExerciseId = sourceId;
+        exerciseCounts[sourceId] = (exerciseCounts[sourceId] || 0) + 1;
+        chosen.skills.forEach(function (item) { skillCounts[item] = (skillCounts[item] || 0) + 1; });
+      });
+
+      generatedRoutine = {
+        id: planId, name: "Rutina inteligente", icon: "✦", tagline: "" + goal.description,
+        goal: goalId, prioritySkills: priorities.slice(), durationMinutes: smartSettings.duration, isSmart: true, exercises: exercises
+      };
+      saved.generatedRoutine = generatedRoutine;
+      saveSmartSettings(); save();
+      return true;
+    }
+    function startSmartSession() {
+      if (!generatedRoutine || !generatedRoutine.exercises.length) return;
+      clearInterval(ticker);
+      const first = generatedRoutine.exercises[0];
+      session = {
+        routineId: generatedRoutine.id, index: 0, remaining: first[3], running: true,
+        endAt: Date.now() + first[3] * 1000, isSmart: true, runId: "run-" + Date.now().toString(36), completedExerciseIds: []
+      };
+      currentPage = "smart"; render(); startTicker();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+    function getRoutineById(id) {
+      return routines.find(function (routine) { return routine.id === id; }) || (generatedRoutine && generatedRoutine.id === id ? generatedRoutine : null);
+    }
+    function isRoutinePageVisible(id) {
+      return currentPage === id || (currentPage === "smart" && generatedRoutine && generatedRoutine.id === id);
+    }
+    function saveSmartSessionResult(completedNormally) {
+      if (!session || !session.isSmart || session.resultSaved) return null;
+      const routine = getRoutineById(session.routineId);
+      if (!routine) return null;
+      const completedIds = Array.isArray(session.completedExerciseIds) ? session.completedExerciseIds : [];
+      const completedSet = new Set(completedIds);
+      const completedSeconds = routine.exercises.reduce(function (sum, exercise) { return sum + (completedSet.has(exercise[0]) ? exercise[3] : 0); }, 0);
+      const result = {
+        runId: session.runId, date: todayKey, goal: routine.goal, durationMinutes: routine.durationMinutes,
+        completedSeconds: completedSeconds, completedExercises: completedSet.size, totalExercises: routine.exercises.length,
+        completed: !!completedNormally && completedSet.size === routine.exercises.length
+      };
+      saved.smartHistory.push(result);
+      saved.smartHistory = saved.smartHistory.slice(-50);
+      session.resultSaved = true;
+      save();
+      return result;
     }
     function renderSkins() {
       const savedSkin = saved.skinOfTheDay;
@@ -739,16 +982,17 @@
       const percent = Math.round(done / count * 100);
       const exRows = routine.exercises.map(function (ex, index) {
         const checked = !!checks[ex[0]];
+        const smartMeta = ex[4] && ex[5] ? '<span class="exercise-detail exercise-meta">' + ex[5] + ' · Dificultad ' + ex[4] + '</span>' : '';
         return '<label class="exercise' + (checked ? ' completed' : '') + '"><input class="exercise-check" type="checkbox" data-exercise="' + ex[0] + '" ' + (checked ? 'checked' : '') + ' aria-label="Marcar ' + ex[1] + ' como completado">' +
-          '<span><span class="exercise-title">' + (index + 1) + '. ' + ex[1] + '</span><span class="exercise-detail">' + ex[2] + '</span></span>' +
+          '<span><span class="exercise-title">' + (index + 1) + '. ' + ex[1] + '</span><span class="exercise-detail">' + ex[2] + '</span>' + smartMeta + '</span>' +
           '<span class="exercise-time">' + formatTime(ex[3]) + '</span></label>';
       }).join("");
       const selectedExercise = session && session.routineId === routine.id ? routine.exercises[session.index] : null;
       const sessionPanel = selectedExercise ?
         '<div class="session-top"><div><div class="session-kicker">En curso · ' + (session.index + 1) + ' de ' + count + '</div><div class="session-current">' + selectedExercise[1] + '</div></div><div class="timer" id="timer-value">' + formatTime(session.remaining) + '</div></div>' +
-        '<div class="session-actions"><button class="button small primary" type="button" data-session="toggle">' + (session.running ? 'Ⅱ Pausar' : '▶ Continuar') + '</button><button class="button small secondary" type="button" data-session="skip">Siguiente ejercicio ↗</button><button class="button small secondary" type="button" data-session="stop">Terminar sesión</button></div>' :
+        '<div class="session-actions"><button class="button small primary" type="button" data-session="complete">Completar ejercicio ✓</button><button class="button small secondary" type="button" data-session="toggle">' + (session.running ? 'Ⅱ Pausar' : '▶ Continuar') + '</button><button class="button small secondary" type="button" data-session="skip">Siguiente ejercicio ↗</button><button class="button small secondary" type="button" data-session="stop">Terminar sesión</button></div>' :
         '<div class="session-empty"><strong>Sesión de ' + durationLabel(totalDuration(routine)) + '</strong>Inicia el temporizador y sigue el tiempo sugerido para cada ejercicio.</div>' +
-        '<div class="session-actions"><button class="button small primary" type="button" data-session="start">▶ Iniciar rutina con temporizador</button></div>';
+        '<div class="session-actions"><button class="button small primary" type="button" data-session="start">▶ ' + (routine.isSmart ? 'Iniciar sesión inteligente' : 'Iniciar rutina con temporizador') + '</button></div>';
       view.innerHTML =
         '<div class="routine-header"><div class="routine-heading"><span class="routine-icon" aria-hidden="true">' + routine.icon + '</span><div><p class="eyebrow">Rutina de entrenamiento</p><h1>' + routine.name + '</h1><p class="page-intro">' + routine.tagline + '</p></div></div><div class="duration-pill">◷ &nbsp;' + durationLabel(totalDuration(routine)) + '</div></div>' +
         '<div class="progress-wrap"><div class="progress-copy"><span>Progreso de hoy</span><span>' + done + ' / ' + count + ' ejercicios · ' + percent + '%</span></div><div class="progress-track" role="progressbar" aria-label="Progreso de ' + routine.name + '" aria-valuenow="' + percent + '" aria-valuemin="0" aria-valuemax="100"><div class="progress-fill" style="width:' + percent + '%"></div></div></div>' +
@@ -768,7 +1012,7 @@
       if (action === "start") {
         const firstIndex = routine.exercises.findIndex(function (ex) { return !dayState(todayKey).exercises[ex[0]]; });
         const index = firstIndex < 0 ? 0 : firstIndex;
-        session = { routineId: routine.id, index: index, remaining: routine.exercises[index][3], running: true, endAt: Date.now() + routine.exercises[index][3] * 1000 };
+        session = { routineId: routine.id, index: index, remaining: routine.exercises[index][3], running: true, endAt: Date.now() + routine.exercises[index][3] * 1000, isSmart: !!routine.isSmart, runId: "run-" + Date.now().toString(36), completedExerciseIds: [] };
         startTicker();
       } else if (!session) return;
       else if (action === "toggle") {
@@ -777,8 +1021,13 @@
       } else if (action === "skip") {
         advanceSession(false);
         if (session && session.running) startTicker();
+      } else if (action === "complete") {
+        advanceSession(true);
+        if (session && session.running) startTicker();
       } else if (action === "stop") {
+        const result = saveSmartSessionResult(false);
         session = null; clearInterval(ticker); ticker = null;
+        if (result) showToast("Sesión guardada: " + result.completedExercises + "/" + result.totalExercises + " ejercicios.");
       }
       renderRoutine(routine);
     }
@@ -792,26 +1041,29 @@
           advanceSession(true);
           if (!session) {
             clearInterval(ticker); ticker = null;
-            if (currentPage === routineId) render();
-          } else if (currentPage === routineId) {
-            renderRoutine(routines.find(function (r) { return r.id === routineId; }));
+            if (isRoutinePageVisible(routineId)) render();
+          } else if (isRoutinePageVisible(routineId)) {
+            renderRoutine(getRoutineById(routineId));
           }
           return;
         }
         const timerValue = document.getElementById("timer-value");
-        if (timerValue && currentPage === session.routineId) timerValue.textContent = formatTime(session.remaining);
+        if (timerValue && isRoutinePageVisible(session.routineId)) timerValue.textContent = formatTime(session.remaining);
       }, 1000);
     }
     function advanceSession(markDone) {
       if (!session) return;
-      const routine = routines.find(function (r) { return r.id === session.routineId; });
+      const routine = getRoutineById(session.routineId);
+      if (!routine) { session = null; clearInterval(ticker); ticker = null; return; }
       const current = routine.exercises[session.index];
       if (markDone) {
         dayState(todayKey).exercises[current[0]] = true;
+        if (session.isSmart && !session.completedExerciseIds.includes(current[0])) session.completedExerciseIds.push(current[0]);
         save();
       }
       const nextIndex = session.index + 1;
       if (nextIndex >= routine.exercises.length) {
+        if (session.isSmart) saveSmartSessionResult(!!markDone);
         session = null; clearInterval(ticker); ticker = null;
         showToast(markDone ? "¡Rutina completada! Buen trabajo." : "Fin de la rutina.");
         return;
