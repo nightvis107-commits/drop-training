@@ -1,0 +1,20 @@
+DROP TRAINING - VERSION PARA CELULAR
+
+Esta carpeta contiene una web app instalable (PWA).
+
+PUBLICARLA
+La app debe estar alojada en una dirección HTTPS para poder instalarla
+desde el navegador. Sube el CONTENIDO de esta carpeta a un alojamiento web
+estático. Por ejemplo, GitHub Pages puede alojar archivos estáticos.
+
+INSTALAR EN ANDROID
+1. Abre la dirección publicada en Chrome.
+2. Toca el menú ⋮ y elige "Instalar" o "Agregar a pantalla principal".
+
+INSTALAR EN IPHONE
+1. Abre la dirección publicada en Safari.
+2. Toca Compartir y elige "Añadir a pantalla de inicio".
+3. Si aparece "Abrir como app web", actívalo y toca Añadir.
+
+El progreso se guarda en cada dispositivo por separado. No se sincroniza
+entre celular y computadora automáticamente.
