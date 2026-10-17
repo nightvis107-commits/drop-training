@@ -278,6 +278,10 @@
     .skin-result-label { color: var(--green); font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: .12em; }
     .skin-result-name { display: block; margin-top: 4px; font-size: 22px; line-height: 1.2; letter-spacing: -.025em; }
     .skin-result-reason { color: var(--muted); margin-top: 7px; font-size: 13px; }
+    .skin-result-pair { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 10px; margin-top: 13px; }
+    .skin-result-item { min-width: 0; padding: 12px; border: 1px solid rgba(255,255,255,.08); border-radius: 11px; background: rgba(13,15,22,.34); }
+    .skin-result-item-label { color: var(--muted); font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: .1em; }
+    .skin-result-item .skin-result-name { overflow-wrap: anywhere; font-size: 18px; }
     .skin-list { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 8px; margin: 16px 0 0; padding: 0; list-style: none; }
     .skin-favorite { display: flex; align-items: center; gap: 8px; min-width: 0; min-height: 39px; padding: 7px 9px; border: 1px solid rgba(255,255,255,.055); border-radius: 10px; background: rgba(255,255,255,.025); color: var(--muted); font-size: 11px; }
     .skin-favorite.selected { border-color: rgba(182,243,76,.4); color: var(--text); background: rgba(182,243,76,.08); }
@@ -311,6 +315,7 @@
     .ui-mobile .topbar-tools { gap: 10px; }
     .ui-mobile .content { padding: 25px 16px 50px; }
     .ui-mobile .skin-layout, .ui-mobile .routine-grid, .ui-mobile .two-column, .ui-mobile .gear-grid { grid-template-columns: 1fr; }
+    .ui-mobile .skin-result-pair { grid-template-columns: 1fr; }
     .ui-mobile .two-column { gap: 12px; margin-top: 30px; }
     .ui-mobile .routine-card { padding: 15px; }
     .ui-mobile .skin-panel { padding: 16px; }
@@ -503,6 +508,15 @@
       { name: "Lightrider", reason: "Su vibra veloz acompaña el movimiento fluido de una sesión de free build." },
       { name: "Spycatcher Siren", reason: "Un estilo sigiloso para planear cada entrada y tomar las piezas con cabeza." }
     ];
+    const favoritePickaxes = [
+      { name: "Skullcracer", reason: "Su nombre te recuerda mantener la presión y seguir practicando cada movimiento." },
+      { name: "The Vault Guardian", reason: "Una buena compañía para entrenar con calma, protegerte y elegir bien cuándo avanzar." },
+      { name: "Skully Sceptre", reason: "Un toque de precisión para repetir tus ediciones y movimientos con intención." },
+      { name: "Apex Predator", reason: "Te anima a jugar con confianza y tomar la iniciativa en cada práctica." },
+      { name: "Fiendish Wand", reason: "Un estilo diferente para probar combos y darle creatividad al free build." },
+      { name: "Ice Breaker", reason: "Te recuerda mantener la cabeza fría y controlar el ritmo de cada duelo." },
+      { name: "The Minty Mountaineer", reason: "Una elección para avanzar paso a paso y superar cada reto de la sesión." }
+    ];
     const navItems = [
       { id: "home", name: "Inicio", icon: "⌂" },
       ...routines.map(function (r) { return { id: r.id, name: r.name, icon: r.icon }; }),
@@ -640,20 +654,25 @@
       const savedSkin = saved.skinOfTheDay;
       const selected = savedSkin && savedSkin.date === todayKey && Number.isInteger(savedSkin.index) && favoriteSkins[savedSkin.index] ? savedSkin : null;
       const selectedSkin = selected ? favoriteSkins[selected.index] : null;
+      const selectedPickaxeIndex = selected ? (Number.isInteger(selected.pickaxeIndex) && favoritePickaxes[selected.pickaxeIndex] ? selected.pickaxeIndex : selected.index % favoritePickaxes.length) : null;
+      const selectedPickaxe = selected ? favoritePickaxes[selectedPickaxeIndex] : null;
       view.innerHTML =
         '<p class="eyebrow">Una elección para tu sesión</p><h1>Skin de entrenamiento de hoy</h1>' +
-        '<p class="page-intro">Gira la ruleta y deja que una de tus favoritas acompañe el entrenamiento de hoy. Cada elección viene con un motivo para inspirar la sesión.</p>' +
+        '<p class="page-intro">Gira la ruleta para elegir una skin y uno de tus picos favoritos juntos. Cada conjunto viene con una razón para inspirar la sesión.</p>' +
         '<div class="skin-layout"><section class="skin-panel skin-wheel-panel" aria-label="Ruleta de skins favoritas">' +
         '<div class="skin-panel-heading"><div><p class="eyebrow">Ruleta de hoy</p><h2>¿Con cuál entrenas?</h2><p>Tu elección queda guardada durante el día.</p></div></div>' +
         '<div class="skin-wheel-stage"><span class="skin-pointer" aria-hidden="true"></span><div class="skin-wheel"><div class="skin-wheel-disc" id="skin-wheel-disc" aria-hidden="true"></div></div><div class="skin-wheel-center" aria-hidden="true">F</div></div>' +
         '<button class="button primary skin-spin" id="spin-skin" type="button">' + (selected ? 'Volver a girar la ruleta' : 'Girar ruleta') + '</button>' +
         '<div class="skin-result" id="skin-result" aria-live="polite">' +
-        (selectedSkin ? '<span class="skin-result-label">Tu skin de entrenamiento de hoy</span><strong class="skin-result-name">' + selectedSkin.name + '</strong><p class="skin-result-reason"><strong>¿Por qué salió?</strong> ' + selectedSkin.reason + '</p>' : '<span class="skin-result-label">Tu elección de hoy</span><strong class="skin-result-name">Gira la ruleta</strong><p class="skin-result-reason">Al elegir una skin también verás por qué puede acompañar tu práctica de hoy.</p>') +
+        (selectedSkin ? '<span class="skin-result-label">Tu conjunto de entrenamiento de hoy</span><p class="skin-result-reason"><strong>Esta skin fue elegida junto a este pico:</strong></p><div class="skin-result-pair"><div class="skin-result-item"><span class="skin-result-item-label">Skin</span><strong class="skin-result-name">' + selectedSkin.name + '</strong><p class="skin-result-reason">' + selectedSkin.reason + '</p></div><div class="skin-result-item"><span class="skin-result-item-label">Pico</span><strong class="skin-result-name">' + selectedPickaxe.name + '</strong><p class="skin-result-reason">' + selectedPickaxe.reason + '</p></div></div><p class="skin-result-reason"><strong>¿Por qué esta combinación?</strong> La skin inspira el ánimo de la sesión y el pico acompaña el objetivo de práctica. Son motivos para entrar con ganas; los cosméticos no cambian tus habilidades.</p>' : '<span class="skin-result-label">Tu elección de hoy</span><strong class="skin-result-name">Gira la ruleta</strong><p class="skin-result-reason">La ruleta elegirá una skin junto a uno de tus picos favoritos y te contará por qué van con la sesión.</p>') +
         '</div></section><section class="skin-panel"><div class="skin-panel-heading"><div><p class="eyebrow">Tu colección</p><h2>Mis skins favoritas</h2><p>Todas pueden salir en la ruleta.</p></div><span class="skin-count">' + favoriteSkins.length + ' skins</span></div>' +
         '<ol class="skin-list">' + favoriteSkins.map(function (skin, index) {
           const isSelected = selected && selected.index === index;
           return '<li class="skin-favorite' + (isSelected ? ' selected' : '') + '"><span class="skin-favorite-number">' + String(index + 1).padStart(2, '0') + '</span><span class="skin-favorite-name">' + skin.name + '</span></li>';
-        }).join('') + '</ol><p class="skin-hint">La razón es una idea de entrenamiento inspirada en el estilo o el nombre de la skin; no cambia sus habilidades en el juego.</p></section></div>' +
+        }).join('') + '</ol><p class="skin-hint">La razón es una idea de entrenamiento inspirada en el estilo o el nombre de la skin; no cambia sus habilidades en el juego.</p><div class="skin-panel-heading" style="margin-top:22px"><div><p class="eyebrow">Para combinar</p><h2>Mis picos favoritos</h2><p>La ruleta también elige uno para acompañar tu skin.</p></div><span class="skin-count">' + favoritePickaxes.length + ' picos</span></div><ol class="skin-list">' + favoritePickaxes.map(function (pickaxe, index) {
+          const isSelected = selected && selectedPickaxeIndex === index;
+          return '<li class="skin-favorite' + (isSelected ? ' selected' : '') + '"><span class="skin-favorite-number">' + String(index + 1).padStart(2, '0') + '</span><span class="skin-favorite-name">' + pickaxe.name + '</span></li>';
+        }).join('') + '</ol></section></div>' +
         '<p class="footer-note">La skin del día y tus rutinas se guardan en este dispositivo.</p>';
 
       const wheel = document.getElementById("skin-wheel-disc");
@@ -681,6 +700,8 @@
         if (spinButton.disabled) return;
         const index = Math.floor(Math.random() * favoriteSkins.length);
         const chosen = favoriteSkins[index];
+        const pickaxeIndex = Math.floor(Math.random() * favoritePickaxes.length);
+        const chosenPickaxe = favoritePickaxes[pickaxeIndex];
         const targetAngle = alignmentFor(index);
         const currentAngle = ((wheelRotation % 360) + 360) % 360;
         const alignmentOffset = (targetAngle - currentAngle + 360) % 360;
@@ -690,10 +711,10 @@
         spinButton.textContent = "Girando…";
         wheel.style.transform = "rotate(" + finalRotation + "deg)";
         window.setTimeout(function () {
-          saved.skinOfTheDay = { date: todayKey, index: index };
+          saved.skinOfTheDay = { date: todayKey, index: index, pickaxeIndex: pickaxeIndex };
           save();
           if (currentPage === "skins") renderSkins();
-          showToast("Skin elegida: " + chosen.name + ".");
+          showToast("Conjunto de hoy: " + chosen.name + " + " + chosenPickaxe.name + ".");
         }, window.matchMedia("(prefers-reduced-motion: reduce)").matches ? 120 : 5550);
       });
     }

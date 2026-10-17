@@ -1,4 +1,4 @@
-const CACHE_NAME = "drop-training-v1";
+const CACHE_NAME = "drop-training-v2";
 const APP_FILES = [
   "./index.html",
   "./manifest.json",
