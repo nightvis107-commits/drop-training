@@ -292,32 +292,12 @@
     .gear-type { color: var(--muted); font-size: 11px; text-transform: uppercase; letter-spacing: .1em; font-weight: 700; }
     .gear-name { margin-top: 5px; font-size: 16px; font-weight: 700; }
     .gear-note { margin-top: 5px; color: var(--muted); font-size: 12px; }
-    .skin-layout { display: grid; grid-template-columns: minmax(0, .95fr) minmax(0, 1.05fr); gap: 18px; margin-top: 25px; align-items: start; }
-    .skin-panel { border: 1px solid var(--line); background: rgba(25,28,39,.82); border-radius: 18px; padding: 20px; }
-    .skin-panel-heading { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; margin-bottom: 8px; }
-    .skin-panel-heading p { color: var(--muted); font-size: 13px; margin-top: 5px; }
-    .skin-count { flex: 0 0 auto; color: var(--muted); font-size: 11px; padding: 6px 9px; border-radius: 999px; background: var(--panel-3); }
-    .skin-wheel-stage { position: relative; display: grid; place-items: center; width: min(100%, 380px); aspect-ratio: 1; margin: 12px auto 14px; }
-    .skin-wheel { position: relative; width: min(100%, 340px); aspect-ratio: 1; border: 8px solid #292e3c; border-radius: 50%; box-shadow: 0 0 0 5px rgba(182,243,76,.10), 0 18px 40px rgba(0,0,0,.32); }
-    .skin-wheel-disc { position: absolute; inset: 0; overflow: hidden; border: 1px solid rgba(255,255,255,.34); border-radius: 50%; transform: rotate(0deg); transition: transform 5.4s cubic-bezier(.12,.77,.09,1); }
-    .skin-wheel-label { position: absolute; left: 50%; top: 50%; display: grid; place-items: center; width: 23px; height: 22px; border-radius: 7px; color: #10121a; background: rgba(255,255,255,.82); font-size: 10px; font-weight: 900; box-shadow: 0 1px 5px rgba(0,0,0,.2); }
-    .skin-pointer { position: absolute; z-index: 3; top: 10px; left: 50%; transform: translateX(-50%); width: 0; height: 0; border-left: 12px solid transparent; border-right: 12px solid transparent; border-top: 23px solid var(--green); filter: drop-shadow(0 3px 4px rgba(0,0,0,.48)); }
-    .skin-wheel-center { position: absolute; z-index: 2; top: 50%; left: 50%; display: grid; place-items: center; width: 68px; height: 68px; transform: translate(-50%,-50%); border: 5px solid #292e3c; border-radius: 50%; color: #151a10; background: var(--green); font-size: 22px; font-weight: 900; box-shadow: 0 4px 14px rgba(0,0,0,.3); }
-    .skin-spin { width: 100%; }
-    .skin-result { margin-top: 16px; padding: 16px; border: 1px solid rgba(182,243,76,.22); border-radius: 14px; background: linear-gradient(135deg, rgba(182,243,76,.10), rgba(167,139,250,.06)); }
-    .skin-result-label { color: var(--green); font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: .12em; }
-    .skin-result-name { display: block; margin-top: 4px; font-size: 22px; line-height: 1.2; letter-spacing: -.025em; }
-    .skin-result-reason { color: var(--muted); margin-top: 7px; font-size: 13px; }
-    .skin-result-pair { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 10px; margin-top: 13px; }
-    .skin-result-item { min-width: 0; padding: 12px; border: 1px solid rgba(255,255,255,.08); border-radius: 11px; background: rgba(13,15,22,.34); }
-    .skin-result-item-label { color: var(--muted); font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: .1em; }
-    .skin-result-item .skin-result-name { overflow-wrap: anywhere; font-size: 18px; }
-    .skin-list { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 8px; margin: 16px 0 0; padding: 0; list-style: none; }
-    .skin-favorite { display: flex; align-items: center; gap: 8px; min-width: 0; min-height: 39px; padding: 7px 9px; border: 1px solid rgba(255,255,255,.055); border-radius: 10px; background: rgba(255,255,255,.025); color: var(--muted); font-size: 11px; }
-    .skin-favorite.selected { border-color: rgba(182,243,76,.4); color: var(--text); background: rgba(182,243,76,.08); }
-    .skin-favorite-number { flex: 0 0 auto; display: grid; place-items: center; width: 22px; height: 22px; border-radius: 7px; color: var(--green); background: rgba(182,243,76,.10); font-size: 10px; font-weight: 800; }
-    .skin-favorite-name { overflow-wrap: anywhere; }
-    .skin-hint { color: var(--muted); font-size: 12px; margin-top: 13px; }
+    .skin-generator { max-width: 720px; margin-top: 26px; padding: clamp(18px, 3vw, 30px); border: 1px solid var(--line); border-radius: 20px; background: var(--panel); }
+    .skin-result-pair { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 14px; }
+    .skin-result-item { min-width: 0; min-height: 142px; padding: 20px; border: 1px solid rgba(255,255,255,.07); border-radius: 14px; background: rgba(13,15,22,.45); }
+    .skin-result-item-label { color: var(--green); font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: .14em; }
+    .skin-result-name { display: block; margin-top: 14px; font-size: clamp(22px, 3vw, 28px); line-height: 1.25; letter-spacing: -.025em; overflow-wrap: break-word; }
+    .skin-generate { width: 100%; min-height: 50px; margin-top: 20px; }
     .profile-banner { position: relative; isolation: isolate; min-height: 104px; margin: 14px clamp(20px, 4vw, 54px) 0; padding: 16px 20px; overflow: hidden; display: flex; align-items: center; gap: 15px; border: 1px solid rgba(255,255,255,.10); border-radius: 16px; background: #151923; }
     .profile-banner-photo, .profile-banner-shade { position: absolute; z-index: -1; inset: 0; width: 100%; height: 100%; }
     .profile-banner-photo { object-fit: cover; object-position: center 47%; opacity: .94; filter: brightness(1.18) saturate(.9); }
@@ -388,11 +368,10 @@
     .ui-mobile .crumb { min-width: 0; }
     .ui-mobile .topbar-tools { gap: 10px; }
     .ui-mobile .content { padding: 25px 16px 50px; }
-    .ui-mobile .skin-layout, .ui-mobile .routine-grid, .ui-mobile .two-column, .ui-mobile .gear-grid, .ui-mobile .smart-config { grid-template-columns: 1fr; }
+    .ui-mobile .routine-grid, .ui-mobile .two-column, .ui-mobile .gear-grid, .ui-mobile .smart-config { grid-template-columns: 1fr; }
     .ui-mobile .skin-result-pair { grid-template-columns: 1fr; }
     .ui-mobile .two-column { gap: 12px; margin-top: 30px; }
     .ui-mobile .routine-card { padding: 15px; }
-    .ui-mobile .skin-panel { padding: 16px; }
     .app.ui-desktop { grid-template-columns: 244px minmax(0, 1fr); }
     .ui-desktop .sidebar { position: static; padding: 26px 16px; border-right: 1px solid rgba(255,255,255,.07); border-bottom: 0; gap: 28px; }
     .ui-desktop .brand { display: flex; }
@@ -404,7 +383,6 @@
     .ui-desktop .content { max-width: 1190px; padding: 36px clamp(20px, 4vw, 54px) 64px; }
     @media (max-width: 820px) {
       .app { grid-template-columns: minmax(0, 1fr); }
-      .skin-layout { grid-template-columns: 1fr; }
       .sidebar {
         position: sticky; top: 0; z-index: 4; padding: 10px 14px;
         min-width: 0; width: 100%; border-right: 0; border-bottom: 1px solid rgba(255,255,255,.08);
@@ -437,8 +415,8 @@
       .smart-card { padding: 16px; }
       .smart-plan { padding: 16px; }
       .smart-plan-heading { flex-direction: column; }
-      .skin-panel { padding: 16px; }
-      .skin-wheel-stage { width: min(100%, 340px); }
+      .skin-result-pair { grid-template-columns: 1fr; }
+      .skin-result-item { min-height: 112px; padding: 18px; }
       .stat { padding: 13px 12px; }
       .stat-value { font-size: 21px; }
       .stat-note { display: none; }
@@ -584,42 +562,43 @@
       { id: "provocation", group: "tilt", title: "Si el rival te provoca", detail: "No respondas al emote ni al chat; vuelve a mirar zona, materiales y posicionamiento." }
     ];
     const favoriteSkins = [
-      { name: "Serenade", reason: "Su estilo tranquilo acompaña una sesión de precisión y buen ritmo." },
-      { name: "Shady Zadie", reason: "Un look con actitud para practicar con confianza y mantener la presión." },
-      { name: "Scarlett Commander", reason: "Su aire de comandante va con una sesión ordenada: objetivo, ejecución y revisión." },
-      { name: "Yellowjacket", reason: "Su color llamativo le pone energía a una práctica rápida y activa." },
-      { name: "Wavebreaker", reason: "Su vibra de olas encaja con moverte con fluidez y adaptarte." },
-      { name: "Surf Witch", reason: "Una elección relajada para soltar la mano y mantener el flow." },
-      { name: "Reverie", reason: "Su estilo creativo inspira una sesión de free build y rutas nuevas." },
-      { name: "Outlaw Midas", reason: "Presencia de jefe para entrenar con calma y tomar decisiones claras." },
-      { name: "Polly", reason: "Un look alegre para recordar que practicar también puede sentirse ligero." },
-      { name: "Minty Bomber", reason: "Sus colores vivos aportan energía desde el calentamiento." },
-      { name: "Mariana", reason: "Su vibra oceánica acompaña movimientos fluidos y controlados." },
-      { name: "Melodie Mars", reason: "Un toque espacial para variar la sesión y mantener la curiosidad." },
-      { name: "Lady Winfrost", reason: "Su estilo frío recuerda mantener la cabeza serena en cada duelo." },
-      { name: "Hangfire", reason: "Un look de acción para enfocarte en encadenar movimientos limpios." },
-      { name: "Fresh Aura", reason: "Una elección clásica para una rutina constante y equilibrada." },
-      { name: "Focus", reason: "El nombre marca la misión de hoy: atención en cada ejercicio." },
-      { name: "Echo", reason: "Ideal para repetir cada movimiento con intención y pulirlo." },
-      { name: "Dueling Dragons Jackie", reason: "Su estilo potente motiva una sesión intensa de piece control y retakes." },
-      { name: "Caper", reason: "Su lado creativo inspira probar rutas distintas sin perder el control." },
-      { name: "Sparx", reason: "Energía para los flicks, los cambios de objetivo y el movimiento rápido." },
-      { name: "Soleil", reason: "Un estilo luminoso para empezar el entrenamiento con ánimo." },
-      { name: "Mortuus X", reason: "Un look oscuro para concentrarte y ejecutar con calma." },
-      { name: "Emma Frost", reason: "Su estilo elegante y frío combina con practicar decisiones precisas." },
-      { name: "Contract Giller", reason: "Una elección distinta para salir de rutina y trabajar la constancia." },
-      { name: "Heartseeker Aphrodite", reason: "Un tema de corazón para recordar que cada peek se practica con cuidado." },
-      { name: "Lightrider", reason: "Su vibra veloz acompaña el movimiento fluido de una sesión de free build." },
-      { name: "Spycatcher Siren", reason: "Un estilo sigiloso para planear cada entrada y tomar las piezas con cabeza." }
+      { name: "Serenade" },
+      { name: "Shady Zadie" },
+      { name: "Scarlett Commander" },
+      { name: "Yellowjacket" },
+      { name: "Wavebreaker" },
+      { name: "Surf Witch" },
+      { name: "Reverie" },
+      { name: "Outlaw Midas" },
+      { name: "Polly" },
+      { name: "Minty Bomber" },
+      { name: "Mariana" },
+      { name: "Melodie Mars" },
+      { name: "Lady Winfrost" },
+      { name: "Hangfire" },
+      { name: "Fresh Aura" },
+      { name: "Focus" },
+      { name: "Echo" },
+      { name: "Dueling Dragons Jackie" },
+      { name: "Caper" },
+      { name: "Sparx" },
+      { name: "Soleil" },
+      { name: "Mortuus X" },
+      { name: "Emma Frost" },
+      { name: "Contract Giller" },
+      { name: "Heartseeker Aphrodite" },
+      { name: "Lightrider" },
+      { name: "Spycatcher Siren" },
+      { name: "Bandido Psicópata" }
     ];
     const favoritePickaxes = [
-      { name: "Skullcracer", reason: "Su nombre te recuerda mantener la presión y seguir practicando cada movimiento." },
-      { name: "The Vault Guardian", reason: "Una buena compañía para entrenar con calma, protegerte y elegir bien cuándo avanzar." },
-      { name: "Skully Sceptre", reason: "Un toque de precisión para repetir tus ediciones y movimientos con intención." },
-      { name: "Apex Predator", reason: "Te anima a jugar con confianza y tomar la iniciativa en cada práctica." },
-      { name: "Fiendish Wand", reason: "Un estilo diferente para probar combos y darle creatividad al free build." },
-      { name: "Ice Breaker", reason: "Te recuerda mantener la cabeza fría y controlar el ritmo de cada duelo." },
-      { name: "The Minty Mountaineer", reason: "Una elección para avanzar paso a paso y superar cada reto de la sesión." }
+      { name: "Skullcracer" },
+      { name: "The Vault Guardian" },
+      { name: "Skully Sceptre" },
+      { name: "Apex Predator" },
+      { name: "Fiendish Wand" },
+      { name: "Ice Breaker" },
+      { name: "The Minty Mountaineer" }
     ];
     const smartSkillLabels = {
       editing: "Edición", piece: "Piece control", building: "Construcción", aim: "Puntería", decisions: "Decisiones y rotaciones"
@@ -681,7 +660,6 @@
     let session = null;
     let ticker = null;
     let toastTimer = null;
-    let wheelRotation = 0;
     const view = document.getElementById("view");
     const nav = document.getElementById("navigation");
     const toast = document.getElementById("toast");
@@ -972,72 +950,69 @@
       save();
       return result;
     }
+    function shuffleFavorites(names) {
+      const shuffled = names.slice();
+      for (let i = shuffled.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        const swap = shuffled[i];
+        shuffled[i] = shuffled[j];
+        shuffled[j] = swap;
+      }
+      return shuffled;
+    }
+    function drawFavorite(items, kind) {
+      const names = items.map(function (item) { return item.name; });
+      const catalog = JSON.stringify(names);
+      if (!saved.cosmeticRotation || typeof saved.cosmeticRotation !== "object" || Array.isArray(saved.cosmeticRotation)) saved.cosmeticRotation = {};
+      let bag = saved.cosmeticRotation[kind];
+      const valid = bag && bag.catalog === catalog && Array.isArray(bag.remaining) &&
+        new Set(bag.remaining).size === bag.remaining.length && bag.remaining.every(function (name) { return names.includes(name); }) &&
+        (bag.last === null || names.includes(bag.last)) && !bag.remaining.includes(bag.last);
+      if (!valid) {
+        // Count the previous saved selection as already drawn when migrating.
+        const previous = saved.skinOfTheDay;
+        const previousIndex = previous && (kind === "skins" ? previous.index :
+          Number.isInteger(previous.pickaxeIndex) ? previous.pickaxeIndex : previous.index % items.length);
+        const last = Number.isInteger(previousIndex) && items[previousIndex] ? items[previousIndex].name : null;
+        bag = { catalog: catalog, remaining: shuffleFavorites(names.filter(function (name) { return name !== last; })), last: last };
+        saved.cosmeticRotation[kind] = bag;
+      }
+      if (!bag.remaining.length) {
+        bag.remaining = shuffleFavorites(names);
+        // Preserve equal appearances per cycle without a repeat at its boundary.
+        if (bag.remaining.length > 1 && bag.remaining[0] === bag.last) {
+          const swapIndex = 1 + Math.floor(Math.random() * (bag.remaining.length - 1));
+          bag.remaining[0] = bag.remaining[swapIndex];
+          bag.remaining[swapIndex] = bag.last;
+        }
+      }
+      bag.last = bag.remaining.shift();
+      return names.indexOf(bag.last);
+    }
+    function generateSkinSet() {
+      const index = drawFavorite(favoriteSkins, "skins");
+      const pickaxeIndex = drawFavorite(favoritePickaxes, "pickaxes");
+      saved.skinOfTheDay = { date: dateKey(new Date()), index: index, pickaxeIndex: pickaxeIndex };
+      save();
+      return saved.skinOfTheDay;
+    }
     function renderSkins() {
       const savedSkin = saved.skinOfTheDay;
-      const selected = savedSkin && savedSkin.date === todayKey && Number.isInteger(savedSkin.index) && favoriteSkins[savedSkin.index] ? savedSkin : null;
-      const selectedSkin = selected ? favoriteSkins[selected.index] : null;
+      const selected = savedSkin && savedSkin.date === dateKey(new Date()) && Number.isInteger(savedSkin.index) && favoriteSkins[savedSkin.index] ? savedSkin : null;
       const selectedPickaxeIndex = selected ? (Number.isInteger(selected.pickaxeIndex) && favoritePickaxes[selected.pickaxeIndex] ? selected.pickaxeIndex : selected.index % favoritePickaxes.length) : null;
-      const selectedPickaxe = selected ? favoritePickaxes[selectedPickaxeIndex] : null;
       view.innerHTML =
-        '<p class="eyebrow">Una elección para tu sesión</p><h1>Skin de entrenamiento de hoy</h1>' +
-        '<p class="page-intro">Gira la ruleta para elegir una skin y uno de tus picos favoritos juntos. Cada conjunto viene con una razón para inspirar la sesión.</p>' +
-        '<div class="skin-layout"><section class="skin-panel skin-wheel-panel" aria-label="Ruleta de skins favoritas">' +
-        '<div class="skin-panel-heading"><div><p class="eyebrow">Ruleta de hoy</p><h2>¿Con cuál entrenas?</h2><p>Tu elección queda guardada durante el día.</p></div></div>' +
-        '<div class="skin-wheel-stage"><span class="skin-pointer" aria-hidden="true"></span><div class="skin-wheel"><div class="skin-wheel-disc" id="skin-wheel-disc" aria-hidden="true"></div></div><div class="skin-wheel-center" aria-hidden="true">F</div></div>' +
-        '<button class="button primary skin-spin" id="spin-skin" type="button">' + (selected ? 'Volver a girar la ruleta' : 'Girar ruleta') + '</button>' +
-        '<div class="skin-result" id="skin-result" aria-live="polite">' +
-        (selectedSkin ? '<span class="skin-result-label">Tu conjunto de entrenamiento de hoy</span><p class="skin-result-reason"><strong>Esta skin fue elegida junto a este pico:</strong></p><div class="skin-result-pair"><div class="skin-result-item"><span class="skin-result-item-label">Skin</span><strong class="skin-result-name">' + selectedSkin.name + '</strong><p class="skin-result-reason">' + selectedSkin.reason + '</p></div><div class="skin-result-item"><span class="skin-result-item-label">Pico</span><strong class="skin-result-name">' + selectedPickaxe.name + '</strong><p class="skin-result-reason">' + selectedPickaxe.reason + '</p></div></div><p class="skin-result-reason"><strong>¿Por qué esta combinación?</strong> La skin inspira el ánimo de la sesión y el pico acompaña el objetivo de práctica. Son motivos para entrar con ganas; los cosméticos no cambian tus habilidades.</p>' : '<span class="skin-result-label">Tu elección de hoy</span><strong class="skin-result-name">Gira la ruleta</strong><p class="skin-result-reason">La ruleta elegirá una skin junto a uno de tus picos favoritos y te contará por qué van con la sesión.</p>') +
-        '</div></section><section class="skin-panel"><div class="skin-panel-heading"><div><p class="eyebrow">Tu colección</p><h2>Mis skins favoritas</h2><p>Todas pueden salir en la ruleta.</p></div><span class="skin-count">' + favoriteSkins.length + ' skins</span></div>' +
-        '<ol class="skin-list">' + favoriteSkins.map(function (skin, index) {
-          const isSelected = selected && selected.index === index;
-          return '<li class="skin-favorite' + (isSelected ? ' selected' : '') + '"><span class="skin-favorite-number">' + String(index + 1).padStart(2, '0') + '</span><span class="skin-favorite-name">' + skin.name + '</span></li>';
-        }).join('') + '</ol><p class="skin-hint">La razón es una idea de entrenamiento inspirada en el estilo o el nombre de la skin; no cambia sus habilidades en el juego.</p><div class="skin-panel-heading" style="margin-top:22px"><div><p class="eyebrow">Para combinar</p><h2>Mis picos favoritos</h2><p>La ruleta también elige uno para acompañar tu skin.</p></div><span class="skin-count">' + favoritePickaxes.length + ' picos</span></div><ol class="skin-list">' + favoritePickaxes.map(function (pickaxe, index) {
-          const isSelected = selected && selectedPickaxeIndex === index;
-          return '<li class="skin-favorite' + (isSelected ? ' selected' : '') + '"><span class="skin-favorite-number">' + String(index + 1).padStart(2, '0') + '</span><span class="skin-favorite-name">' + pickaxe.name + '</span></li>';
-        }).join('') + '</ol></section></div>' +
-        '<p class="footer-note">La skin del día y tus rutinas se guardan en este dispositivo.</p>';
-
-      const wheel = document.getElementById("skin-wheel-disc");
-      const spinButton = document.getElementById("spin-skin");
-      const step = 360 / favoriteSkins.length;
-      const palette = ["#b6f34c", "#a78bfa", "#ffb86b", "#65c5d8", "#ff737a"];
-      const stops = favoriteSkins.map(function (_skin, index) {
-        const start = (index * step).toFixed(3);
-        const end = ((index + 1) * step).toFixed(3);
-        return palette[index % palette.length] + " " + start + "deg " + end + "deg";
-      }).join(", ");
-      wheel.style.background = "conic-gradient(from " + (-step / 2) + "deg, " + stops + ")";
-      const wheelSize = wheel.getBoundingClientRect().width;
-      wheel.innerHTML = favoriteSkins.map(function (_skin, index) {
-        const angle = index * step;
-        const radius = Math.round(wheelSize * .39);
-        return '<span class="skin-wheel-label" style="transform:rotate(' + angle + 'deg) translateY(-' + radius + 'px) rotate(' + (-angle) + 'deg)">' + String(index + 1).padStart(2, '0') + '</span>';
-      }).join("");
-      function alignmentFor(index) { return (360 - (((index + .5) * step) % 360)) % 360; }
-      wheelRotation = selected ? alignmentFor(selected.index) : 0;
-      wheel.style.transition = "none";
-      wheel.style.transform = "rotate(" + wheelRotation + "deg)";
-      requestAnimationFrame(function () { wheel.style.transition = ""; });
-      spinButton.addEventListener("click", function () {
-        if (spinButton.disabled) return;
-        const index = Math.floor(Math.random() * favoriteSkins.length);
-        const chosen = favoriteSkins[index];
-        const pickaxeIndex = Math.floor(Math.random() * favoritePickaxes.length);
-        const chosenPickaxe = favoritePickaxes[pickaxeIndex];
-        const targetAngle = alignmentFor(index);
-        const currentAngle = ((wheelRotation % 360) + 360) % 360;
-        const alignmentOffset = (targetAngle - currentAngle + 360) % 360;
-        const finalRotation = wheelRotation + 360 * 7 + alignmentOffset;
-        wheelRotation = finalRotation;
-        spinButton.disabled = true;
-        spinButton.textContent = "Girando…";
-        wheel.style.transform = "rotate(" + finalRotation + "deg)";
-        window.setTimeout(function () {
-          saved.skinOfTheDay = { date: todayKey, index: index, pickaxeIndex: pickaxeIndex };
-          save();
-          if (currentPage === "skins") renderSkins();
-          showToast("Conjunto de hoy: " + chosen.name + " + " + chosenPickaxe.name + ".");
-        }, window.matchMedia("(prefers-reduced-motion: reduce)").matches ? 120 : 5550);
+        '<p class="eyebrow">Tu conjunto</p><h1>Skin de entrenamiento de hoy</h1>' +
+        '<section class="skin-generator" aria-label="Generador de skin y pico">' +
+        '<div class="skin-result-pair" id="skin-result" role="status" aria-live="polite" aria-atomic="true">' +
+        '<div class="skin-result-item"><span class="skin-result-item-label">Skin</span><strong class="skin-result-name" id="selected-skin-name">' + (selected ? favoriteSkins[selected.index].name : '—') + '</strong></div>' +
+        '<div class="skin-result-item"><span class="skin-result-item-label">Pico</span><strong class="skin-result-name" id="selected-pickaxe-name">' + (selected ? favoritePickaxes[selectedPickaxeIndex].name : '—') + '</strong></div></div>' +
+        '<button class="button primary skin-generate" id="generate-skin" type="button">' + (selected ? 'Generar otro conjunto' : 'Generar conjunto') + '</button></section>';
+      const generateButton = document.getElementById("generate-skin");
+      generateButton.addEventListener("click", function () {
+        const result = generateSkinSet();
+        document.getElementById("selected-skin-name").textContent = favoriteSkins[result.index].name;
+        document.getElementById("selected-pickaxe-name").textContent = favoritePickaxes[result.pickaxeIndex].name;
+        generateButton.textContent = "Generar otro conjunto";
       });
     }
     function rankFor(mode) { return rankLevels.find(function (rank) { return rank.id === saved.ranks[mode]; }) || rankLevels[0]; }
